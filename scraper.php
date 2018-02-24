@@ -17,14 +17,14 @@ for($page = 0;$page <= 0; $page++)
 		$html	=	file_get_html($link);
 		if($html)
 		{
-			foreach($html->find("/html/body/div/div/div[@class='mb15px fo bdr bsb5px10-hover']") as $element)
+			foreach($html->find("/html/body/div/div/div[@itemtype='http://schema.org/Organization']") as $element)
 			{
-				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->plaintext;
-				$linkofcompany	=	$element->find("a[@class='xxlarge']",0)->href;
-				echo $linkofcompany;
+				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->href;
+				
+				echo $nameofcompany'<br>';
+				scraperwiki::save_sqlite(array('link'), array('link' => $nameofcompany));
 			}
 		}
 	
 	}
-
 ?>
