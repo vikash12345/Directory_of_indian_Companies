@@ -21,9 +21,18 @@ for($page = 0;$page <= 0; $page++)
 			sleep(5);
 			foreach($html->find("/html/body/div/div/div[@itemtype='http://schema.org/Organization']") as $element)
 			{
-				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->href;
-				$record = array( 'nameofcompany' =>$nameofcompany);
-				scraperwiki::save(array('nameofcompany'), $record);
+				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->plaintext;
+				$des		=	$element->find("div[@itemprop='description']",0)->plaintext;
+				$phone		=	$element->find("b[@itemprop='telephone']",0)->plaintext;
+				$address	=	$element->find("li[@itemprop='streetAddress']",0)->plaintext;
+				$link		=	$element->find("a[@class='blue']",0)->plaintext;
+				
+				$record = array( 'nameofcompany' =>$nameofcompany,
+						'des' =>$des,
+						'phone' =>$phone,
+						'address' =>$address,
+					       'link' =>$link);
+				scraperwiki::save(array('nameofcompany','des','phone','address','link'), $record);
 			}
 		}
 	
