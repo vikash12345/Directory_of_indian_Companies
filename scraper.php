@@ -11,10 +11,11 @@ require 'scraperwiki/simple_html_dom.php';
 		$pages =  (int)$paginations;
 		
 	
-for($page = 0;$page <= 0; $page++)
+for($page = 0;$page <= $pages; $page++)
 	{
 		$link	=	'http://www.indianyellowpages.com/search.php?term=ltd&pageno='.$page;
-		$html	=	file_get_html($link);
+		echo "$link\n" ;
+	$html	=	file_get_html($link);
 		$link	=	$html->find("a[@class='xxlarge']",0)->href;
 		if($html)
 		{
