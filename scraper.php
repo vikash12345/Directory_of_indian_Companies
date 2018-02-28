@@ -26,17 +26,21 @@ for($page = 0;$page <= $pages; $page++)
 				$des		=	$element->find("div[@itemprop='description']",0)->plaintext;
 				$phone		=	$element->find("b[@itemprop='telephone']",0)->plaintext;
 				$fulladdress	=	$element->find("li[@itemprop='streetAddress']",0)->plaintext;
+				$region		=	$element->find("span[@itemprop='addressRegion']",0)->plaintext;
+				$country	=	$element->find("span[@itemprop='addressCountry']",0)->plaintext;
 				$businesstype	=	$element->find("li[@class='ofh']",0)->plaintext; 
 				$link		=	$element->find("a[@class='blue']",0)->plaintext;
 				
 				$record = array( 'nameofcompany' =>$nameofcompany,
 						'phone' =>$phone,
 						'fulladdress' =>$fulladdress,
+						'region' =>$region,
+						'country' =>$country,
 						'businesstype' =>$businesstype,
 						'des' =>$des,
 					       'link' =>$link);
 				
-				scraperwiki::save(array('nameofcompany','phone','fulladdress','businesstype','des','link'), $record);
+				scraperwiki::save(array('nameofcompany','phone','fulladdress','region','country','businesstype','des','link'), $record);
 			}
 		}
 	
