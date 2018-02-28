@@ -17,14 +17,16 @@ for($page = 0;$page <= 0; $page++)
 		$html	=	file_get_html($link);
 		$link	=	$html->find("a[@class='xxlarge']",0)->href;
 		echo $link;
-		/*if($html)
+		if($html)
 		{
 			sleep(5);
 			foreach($html->find("/html/body/div/div/div[@itemtype='http://schema.org/Organization']") as $element)
 			{
-				echo $element;
+				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->plaintext;
+				$record = array( 'nameofcompany' =>$nameofcompany);
+				scraperwiki::save(array('nameofcompany'), $record);
 			}
-		}*/
+		}
 	
 	}
 ?>
