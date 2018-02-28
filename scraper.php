@@ -16,13 +16,12 @@ for($page = 0;$page <= 0; $page++)
 		$link	=	'http://www.indianyellowpages.com/search.php?term=ltd&pageno='.$page;
 		$html	=	file_get_html($link);
 		$link	=	$html->find("a[@class='xxlarge']",0)->href;
-		echo $link;
 		if($html)
 		{
 			sleep(5);
 			foreach($html->find("/html/body/div/div/div[@itemtype='http://schema.org/Organization']") as $element)
 			{
-				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->plaintext;
+				$nameofcompany	=	$element->find("a[@class='xxlarge']",0)->href;
 				$record = array( 'nameofcompany' =>$nameofcompany);
 				scraperwiki::save(array('nameofcompany'), $record);
 			}
