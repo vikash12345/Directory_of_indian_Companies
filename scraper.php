@@ -11,7 +11,7 @@ require 'scraperwiki/simple_html_dom.php';
 		$pages =  (int)$paginations;
 		
 	
-for($page = 0;$page <= $pages; $page++)
+for($page = 1774;$page <= $pages; $page++)
 	{
 		$link	=	'http://www.indianyellowpages.com/search.php?term=ltd&pageno='.$page;
 		echo "$link\n" ;
